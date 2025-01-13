@@ -11,7 +11,7 @@ current_pass = N/A
 
 def main():
     cs()
-    choice = int_input(f"Password Generator\nCurrent password: {current_pass}\n\n1. Generate Password\n 2. Test Password\n 3. Exit\n\nWhat do you want to do? (1-3): ")
+    choice = int_input(f"Password Generator\nCurrent password: {current_pass}\n\n1. Generate Password\n 2. Set Password\n 3. Exit\n\nWhat do you want to do? (1-3): ")
     if choice == 1:
         cs()
         print("Generate Password")
@@ -68,6 +68,18 @@ def main():
         print(f"Lowercases: {lowercase}")
         print(f"Length: {length} characters")
         input("Press enter to continue")
+    if choice == "2":
+        cs()
+        print("Setting password, press enter to cancel")
+        choosing_pass = input("Password:")
+        if choosing_pass == "":
+            input("Canceled, press enter to continue")
+        else:
+            confirm = input("Confirm Password:")
+            if choosing_pass = confirm:
+                current_pass = confirm
+                print("Password successfully changed!")
+                input("Press enter to continue")
         
         
         
