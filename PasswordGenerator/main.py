@@ -1,6 +1,7 @@
 # Jackson Hauley - Password Generator
 
 import random
+from random import shuffle
 import time
 
 num = "1234567890"
@@ -13,12 +14,14 @@ def main():
     while True:
         cs()
         global current_pass
-        try:
-            choice = int(input(f"Password Generator\nCurrent password: {current_pass}\n\n 1. Generate Password\n 2. Set Password\n 3. Test Strength\n\nWhat do you want to do? (1-3): "))
-        except ValueError:
-            print("Only integers accepted")
-            input("Press enter to continue")
-            cs()
+        while True:
+            try:
+                choice = int(input(f"Password Generator\nCurrent password: {current_pass}\n\n 1. Generate Password\n 2. Set Password\n 3. Test Strength\n\nWhat do you want to do? (1-3): "))
+                break
+            except ValueError:
+                print("Only integers accepted")
+                input("Press enter to continue")
+                cs()
 
         if choice == 1:
             cs()
@@ -69,7 +72,34 @@ def main():
                 elif rand == 3 and symbol == "yes" : password = add_symbol(password)
                 elif rand == 4 and capital == "yes": password = add_capital(password)
                 else: continue
-            current_pass = assemble()
+            
+            transition1 = assemble()
+            print(f"1. {transition1}")
+            transition2 = assemble()
+            print(f"2. {transition2}")
+            transition3 = assemble()
+            print(f"3. {transition3}")
+            transition4 = assemble()
+            print(f"4. {transition4}")
+            while True:
+                pass_choice = input("Choose a password (1-4): ")
+                if pass_choice == "1":
+                    current_pass = transition1
+                    break
+                elif pass_choice == "2":
+                    current_pass = transition2
+                    break
+                elif pass_choice == "3":
+                    current_pass = transition3
+                    break
+                elif pass_choice == "4":
+                    current_pass = transition4
+                    break
+                else:
+                    print("Invalid choice, choose a number 1-4")
+                    continue
+
+
             print(f"\nYour generated password was {current_pass}\n")
             print(f"Capitals: {capital}")
             print(f"Symbols: {symbol}")
@@ -98,17 +128,33 @@ def main():
                     input("Press enter to continue ")
 
         elif choice == 3:
+            cs()
             hash = ["-","-","-","-","-","-","-","-","-","-"]
             for x in range(10):
-                cs()
                 printhash = "".join(hash)
+                print(f"[{printhash}]")
                 hash.pop(x)
                 hash.insert(x,"#")
-                print(f"[{printhash}]")
-                time.sleep(1)
+                time.sleep(0.5)
+                cs()
+            printhash = "".join(hash)
             print(f"[{printhash}]")
-            strength = random.randint(1,10)
-            print(f"The password {current_pass} strength level is: {strength}")
+            strength = len(current_pass)%10
+            if current_pass == "N/A" or current_pass == "none":
+                input("Idiot. You cant test no password! (Press enter to continue)")
+                continue
+            if len(current_pass) < 5:
+                strength = 1
+
+            if lowercase == "yes": strength += 1
+            if symbol == "yes": strength += 1
+            if capital == "yes": strength += 1
+            if number == "yes": strength += 1
+
+            if strength > 10:
+                strength = 10
+
+            print(f"Testing password... \nPassword: {current_pass} \nStrength level is: {strength}")
             if strength == 1:
                 print("So weak like that actually sucks")
             elif strength == 2:
@@ -178,8 +224,8 @@ def add_lowercase(password):
 
 def assemble():
     global password
-    output = "".join(password)
-    return output
+    random.shuffle(password)
+    return "".join(password)
 
 
 
