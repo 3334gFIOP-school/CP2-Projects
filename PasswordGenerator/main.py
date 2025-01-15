@@ -1,35 +1,37 @@
 # Jackson Hauley - Password Generator
 
+# Importning
 import random
 from random import shuffle
 import time
 
+# Variable Initializing
 num = "1234567890"
 symbol = "!@#$%^&*_-"
 capital = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 lower = "abcdefghijklmnopqrstuvwxyz"
 current_pass = "N/A"
 
-def main():
+def main(): # Startup main menu thing
     while True:
         cs()
         global current_pass
         while True:
             try:
-                choice = int(input(f"Password Generator\nCurrent password: {current_pass}\n\n 1. Generate Password\n 2. Set Password\n 3. Test Strength\n\nWhat do you want to do? (1-3): "))
+                choice = int(input(f"Password Generator\nCurrent password: {current_pass}\n\n 1. Generate Password\n 2. Set Password\n 3. Test Strength\n\nWhat do you want to do? (1-3): ")) # Menu input/printing
                 break
             except ValueError:
                 print("Only integers accepted")
                 input("Press enter to continue")
                 cs()
 
-        if choice == 1:
+        if choice == 1: # This is choice 1 if you pick it it runs this
             cs()
             print("Generate Password")
             global length
-            length = int_input("How long of a password do you want?: ")
+            length = int_input("How long of a password do you want?: ") # Length
             global password
-            password = []
+            password = [] # Resetting the variables
             number = "no"
             symbol = "no"
             lowercase = "no"
@@ -37,14 +39,14 @@ def main():
             for x in range(length):
                 password.append("")
             while True:
-                pass_choice = input("Do you want capital letters in your password? (y/n): ")
+                pass_choice = input("Do you want capital letters in your password? (y/n): ") # Capitals
                 if pass_choice == "y":
                     capital = "yes"
                     password = add_capital(password)
                     break
                 else: break
             while True:
-                pass_choice = input("Do you want symbols in your password? (y/n): ")
+                pass_choice = input("Do you want symbols in your password? (y/n): ") # Symbols
                 if pass_choice == "y":
                     symbol = "yes"
                     password = add_symbol(password)
@@ -52,21 +54,21 @@ def main():
                 else: break
             
             while True:
-                pass_choice = input("Do you want numbers in your password? (y/n): ")
+                pass_choice = input("Do you want numbers in your password? (y/n): ") # Numbers
                 if pass_choice == "y":
                     number = "yes"
                     password = add_num(password)
                     break
                 else: break
             while True:
-                pass_choice = input("Do you want lowercase letters in your password? (y/n): ")
+                pass_choice = input("Do you want lowercase letters in your password? (y/n): ") # Lowercase
                 if pass_choice == "y":
                     lowercase = "yes"
                     password = add_lowercase(password)
                     break
                 else: break
             while "" in password:
-                rand = random.randint(1,4)
+                rand = random.randint(1,4) # Incase password still has space left over thats not filled in this is a cheker for that
                 if rand == 1 and lowercase == "yes": password = add_lowercase(password)
                 elif rand == 2 and number == "yes" : password = add_num(password)
                 elif rand == 3 and symbol == "yes" : password = add_symbol(password)
@@ -82,7 +84,7 @@ def main():
             transition4 = assemble()
             print(f"4. {transition4}")
             while True:
-                pass_choice = input("Choose a password (1-4): ")
+                pass_choice = input("Choose a password (1-4): ") # Choose a password from 4 choices
                 if pass_choice == "1":
                     current_pass = transition1
                     break
@@ -108,7 +110,7 @@ def main():
             print(f"Length: {length} characters\n")
             input("Press enter to continue")
 
-        elif choice == 2:
+        elif choice == 2: # This is choice 2 if you pick it it runs this
             cs()
             print("Setting password, press enter to cancel")
             choosing_pass = input("Password: ")
@@ -127,9 +129,9 @@ def main():
                     print("Password successfully changed!")
                     input("Press enter to continue ")
 
-        elif choice == 3:
+        elif choice == 3: # This is choice 3 if you pick it it runs this
             cs()
-            hash = ["-","-","-","-","-","-","-","-","-","-"]
+            hash = ["-","-","-","-","-","-","-","-","-","-"] # Fake loading bar generator
             for x in range(10):
                 printhash = "".join(hash)
                 print(f"[{printhash}]")
@@ -140,13 +142,13 @@ def main():
             printhash = "".join(hash)
             print(f"[{printhash}]")
             strength = len(current_pass)%10
-            if current_pass == "N/A" or current_pass == "none":
+            if current_pass == "N/A" or current_pass == "none": # Checking for no password
                 input("Idiot. You cant test no password! (Press enter to continue)")
                 continue
             if len(current_pass) < 5:
                 strength = 1
 
-            if lowercase == "yes": strength += 1
+            if lowercase == "yes": strength += 1 # Strength calculating
             if symbol == "yes": strength += 1
             if capital == "yes": strength += 1
             if number == "yes": strength += 1
@@ -154,7 +156,7 @@ def main():
             if strength > 10:
                 strength = 10
 
-            print(f"Testing password... \nPassword: {current_pass} \nStrength level is: {strength}")
+            print(f"Testing password... \nPassword: {current_pass} \nStrength level is: {strength}") # Message Printing
             if strength == 1:
                 print("So weak like that actually sucks")
             elif strength == 2:
@@ -198,35 +200,35 @@ def cs(): # Clear Screen
 def check_length():
     pass
 
-def add_num(password):
+def add_num(password): # Adds numbers to the password
     location = random.randint(0,length-1)
     password.pop(location)
     password.insert(location,random.choice(num))
     return password
     
-def add_symbol(password):
+def add_symbol(password): # Adds symbols to the password
     location = random.randint(0,length-1)
     password.pop(location)
     password.insert(location,random.choice(symbol))
     return password
 
-def add_capital(password):
+def add_capital(password): # Adds capitals to the password
     location = random.randint(0,length-1)
     password.pop(location)
     password.insert(location,random.choice(capital))
     return password
 
-def add_lowercase(password):
+def add_lowercase(password): # Adds lowercase letters to the password
     location = random.randint(0,length-1)
     password.pop(location)
     password.insert(location,random.choice(lower))
     return password
 
-def assemble():
+def assemble(): # Assembles the password randomly from the list every time
     global password
     random.shuffle(password)
     return "".join(password)
 
 
 
-main()
+main() # Starts Project
