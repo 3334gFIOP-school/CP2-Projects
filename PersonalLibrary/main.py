@@ -134,11 +134,11 @@ def remove_item(): # Remove function
 def search_library():
     cs()
     print(f'{library_name} Search System')
-    search = input("Enter book or author name or ID: ")
+    search = input("Enter book or author full name or ID: ")
     print()
     for x in library: # Searching for book
         for i in range(3):
-            if str(x[i]) == search:
+            if str(x[i]).lower() == search.lower():
                 print(f"Book: {x[0]}") # printing found book
                 print(f"Author: {x[1]}")
                 print(f"ID: {x[2]}\n")
