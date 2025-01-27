@@ -82,7 +82,7 @@ def main():
             print("Thanks for using Jacksons Morse Code Translator!")
             exit()
         else:
-            print("Invalid Input (1-3), try again")
+            print("Invalid Input (1-4), try again")
             input("Press enter to continue")
 
 def eng_to_mor(): # English to morse code
@@ -90,7 +90,7 @@ def eng_to_mor(): # English to morse code
     english = input('Type in the sentence you want translated to morse code: ')
     englishlist = list(english) # Setting up the list
     for x in range(len(englishlist)):
-        if x == " ": # Checking for spaces
+        if englishlist[x] == " ": # Checking for spaces
             continue
         for i in range(len(alphabet)): # Replacing letters with morse code
             if alphabet[i] == englishlist[x].lower():
@@ -102,15 +102,22 @@ def eng_to_mor(): # English to morse code
 def mor_to_eng(): # Morse code to english
     cs()
     morse = input('Type in the morse code you want translated to english: ')
-    morselist = list(morse) # Setting up the list
-    for x in range(len(morselist)):
-        if x == " ": # Checking for spaces
-            continue
-        for i in range(len(morse_alphabet)): # Replacing letters with english
-            if morse_alphabet[i] == morselist[x].lower():
-                morselist.pop(x)
-                morselist.insert(x,alphabet[i])
-    return morselist
+    morselist = []
+    output = []
+    for x in morse:
+        if x == " ": # If there is a space it detects a word
+            word = "".join(morselist)
+            position = morse_alphabet.index(word) # Finding position of morse code word
+            output.append(alphabet[position]) # Finding letter that corresponds with it
+            morselist = []
+            if word in morse_alphabet:
+                continue
+            else:
+                print("There is non-morse code text in your input!")
+                input("Press enter to continue")
+                main()
+        morselist.append(x)
+    return output # Returning output
 
-
+# Running main code
 main()
