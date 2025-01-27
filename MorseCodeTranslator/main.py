@@ -62,20 +62,22 @@ def int_input(text): # Only takes in integers
         return output
 
 def main():
-    global english
     while True:
         cs()
-        choice = int_input("Morse code translator\n\n1. English to Morse Code\n2. Morse Code to English\n3. Exit\n\nWhat do you want to do? (1-3): ") # Seleciton Menu
+        choice = int_input("Morse code translator\n\n1. English to Morse Code\n2. Morse Code to English\n3. View Morse Code to English Table\n4. Exit\n\nWhat do you want to do? (1-4): ") # Seleciton Menu
         if choice == 1: # English to Morse Code
-            eng_to_mor()
-            print(" | ".join(english)) # Printing it in a readable format
-            input("Press enter to continue")
-
-
-
-        elif choice == 2:
-            pass
+            english = eng_to_mor() # English to morse code code
+            print()
+            print(" ".join(english)) # Printing it in a readable format
+            input("\nPress enter to continue")
+        elif choice == 2: # Morse code to english
+            morse = mor_to_eng() # Morse code to english code
+            print()
+            print("".join(morse)) # Printing it in a readable format
+            input("\nPress enter to continue")
         elif choice == 3:
+            pass
+        elif choice == 4:
             cs()
             print("Thanks for using Jacksons Morse Code Translator!")
             exit()
@@ -84,22 +86,31 @@ def main():
             input("Press enter to continue")
 
 def eng_to_mor(): # English to morse code
-    global english
     cs()
     english = input('Type in the sentence you want translated to morse code: ')
-    english.lower()
-    english.split() # Setting up the list
-    for x in english:
+    englishlist = list(english) # Setting up the list
+    for x in range(len(englishlist)):
         if x == " ": # Checking for spaces
             continue
-        for i in alphabet: # Replacing letters with morse code
-            if x == i:
-                english.pop(x)
-                english.insert(x,i)
+        for i in range(len(alphabet)): # Replacing letters with morse code
+            if alphabet[i] == englishlist[x].lower():
+                englishlist.pop(x)
+                englishlist.insert(x,morse_alphabet[i])
+    return englishlist
 
 
-def mor_to_end(): # Morse code to english
-    pass
+def mor_to_eng(): # Morse code to english
+    cs()
+    morse = input('Type in the morse code you want translated to english: ')
+    morselist = list(morse) # Setting up the list
+    for x in range(len(morselist)):
+        if x == " ": # Checking for spaces
+            continue
+        for i in range(len(morse_alphabet)): # Replacing letters with english
+            if morse_alphabet[i] == morselist[x].lower():
+                morselist.pop(x)
+                morselist.insert(x,alphabet[i])
+    return morselist
 
 
 main()
