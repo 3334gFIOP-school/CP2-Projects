@@ -1,20 +1,5 @@
 # Jackson Hauley - Morse Code Translator
 
-# Instructions
-
-'''
-[X] Create two lists (one of the alphabet letters in English, and other for the corresponding Morse Code Symbols) 
-[X] Create a function to translate English into Morse Code
-[X] Create a function to translate Morse Code into English
-[X] Create a main loop where users can choose to translate English to Morse Code, Morse Code to English, or Exit
-Project needs to:
-[O] Use string manipulation to control the appearance of the output 
-[O] Use basic error handling (for characters not in Morse Code)
-[X] Use good naming for functions and variables
-[O] Use pseudocode comments to explain what the program is doing
-[O] Use white space to make sure code is easy to read
-'''
-
 # Initializing Lists
 
 alphabet = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z') # Alphabet Tuple
@@ -72,12 +57,11 @@ def main():
             input("\nPress enter to continue")
         elif choice == 2: # Morse code to english
             morse = mor_to_eng() # Morse code to english code
-            print()
-            print("".join(morse)) # Printing it in a readable format
+            print(f"\n{morse}") # Printing it in a readable format
             input("\nPress enter to continue")
         elif choice == 3:
             pass
-        elif choice == 4:
+        elif choice == 4: # Exittttinggg
             cs()
             print("Thanks for using Jacksons Morse Code Translator!")
             exit()
@@ -89,9 +73,11 @@ def eng_to_mor(): # English to morse code
     cs()
     english = input('Type in the sentence you want translated to morse code: ')
     englishlist = list(english) # Setting up the list
+
     for x in range(len(englishlist)):
         if englishlist[x] == " ": # Checking for spaces
             continue
+
         for i in range(len(alphabet)): # Replacing letters with morse code
             if alphabet[i] == englishlist[x].lower():
                 englishlist.pop(x)
@@ -99,25 +85,25 @@ def eng_to_mor(): # English to morse code
     return englishlist
 
 
-def mor_to_eng(): # Morse code to english
+def mor_to_eng():  # Morse code to English
     cs()
-    morse = input('Type in the morse code you want translated to english: ')
-    morselist = []
+    morse = input('Type in the morse code you want translated to English: ')
     output = []
-    for x in morse:
-        if x == " ": # If there is a space it detects a word
-            word = "".join(morselist)
-            position = morse_alphabet.index(word) # Finding position of morse code word
-            output.append(alphabet[position]) # Finding letter that corresponds with it
-            morselist = []
-            if word in morse_alphabet:
-                continue
+    words = morse.split('   ')  # split by triple space to separate words
+
+    for x in words:
+        letters = x.split()  # split by single space for letters
+        word_output = []
+        for i in letters: # Going through all the letters that it got by splitting a word
+
+            if i in morse_alphabet:
+                position = morse_alphabet.index(i) # indexing
+                word_output.append(alphabet[position])
             else:
                 print("There is non-morse code text in your input!")
-                input("Press enter to continue")
-                main()
-        morselist.append(x)
-    return output # Returning output
+                return  # exit if there is invalid Morse Code
+        output.append(''.join(word_output))  # join the letters to form the word
+    return ' '.join(output)  # return thing
 
 # Running main code
 main()
