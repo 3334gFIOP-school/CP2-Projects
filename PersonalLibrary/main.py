@@ -5,8 +5,18 @@ import random
 # Initializing Variables
 
 library_name = "My Library"
-library = set({})
-id = 0
+library = {
+    1: {"Book": "Test Book",
+        "Author": "Test Author",
+        "ID": 1},
+    2: {"Book": "Test Book 2",
+        "Author": "Test Author 2",
+        "ID": 2},
+    3: {"Book": "Test Book 3",
+        "Author": "Test Author 3",
+        "ID": 3},
+}
+id = 3
 
 
 # Essential Functions
@@ -38,22 +48,21 @@ def cs(): # Clear Screen
     print("\033c",end="")
 
 # Main Funcitons
-def main():
-    global library_name,library,id
+def main(id):
     while True:
         cs()
         choice = int_input("Personal Library\n\n1. Search Library\n2. Add Item\n3. Remove Item\n4. Erase Library\n5. Generate Random Books\n6. Rename Library\n7. View Library\n8. Exit Library\n\nWhat do you want to do? (1-8): ")
         if choice == 1: # Search Item choice
             search_library() # Search Item function
         elif choice == 2: # Adding item choice
-            add_item() # Add item function
+            add_item(id) # Add item function
         elif choice == 3: # Remove item choice
             remove_item() # Remove item function
         elif choice == 4: # Deleting the entire library choice
             sure = input("Are you sure you want to reset your library? (type yes, anything else will cancel): ")
             if sure.lower() == "yes":
                 print("Library reset!")
-                library = set({})
+                library = {}
                 input("Press enter to continue")
             else:
                 print("Glad you decided not too!")
@@ -71,8 +80,12 @@ def main():
                 author2 = random.choice(["Haggard","Pierce","Liam", "Noah", "Oliver", "Elijah", "James", "William", "Benjamin", "Lucas", "Henry", "Alexander", "Mason", "Michael", "Ethan", "Daniel", "Jacob", "Jackson", "Sebastian", "Jack", "Aiden", "Owen", "Samuel", "Matthew", "Joseph", "Levi", "Mateo", "David", "John", "Wyatt", "Carter", "Julian", "Luke", "Hudson", "Grayson", "Isaac", "Gabriel", "Anthony", "Dylan", "Leo", "Lincoln", "Jaxon", "Asher", "Christopher", "Maverick", "Elias", "Joshua", "Andrew", "Theodore", "Caleb", "Ryan", "Adrian", "Thomas", "Charles", "Ezekiel", "Nathan", "Miles", "Dominic", "Xavier", "Isaiah", "Zachary", "Thomas", "Christian", "Joshua", "Hunter", "Cameron", "Carter", "Jace", "Jesse", "Everett", "Santiago", "Cole", "Nolan", "Jeremiah", "Easton", "Angel", "Brayden", "Maxwell", "Josiah", "Ryan", "Jason", "Jaxson", "Robert", "Jameson", "Asher", "Levi", "Lincoln", "Benjamin", "Sebastian", "Oliver", "Henry", "Joseph", "William", "Jackson", "Carter", "David", "Daniel", "Matthew", "Eli", "Jackson", "Lucas", "Levi", "Samuel", "Alexander", "Luke", "Wyatt", "Carter", "Julian", "Wyatt", "Owen", "William", "Elliott", "Ryan", "Elijah", "Harrison", "Milo", "Connor", "Adam", "Cooper", "David", "Victor", "Ezra", "Hank", "Derek", "Ethan", "Micheal", "Charles", "Oliver", "Arthur", "Martin", "Landon", "Theo", "Gabriel", "Mason", "Evan", "Patrick", "Noah", "James", "Wyatt", "Ryan", "Blake", "Harrison", "Lucas", "Caden", "Liam", "Toby", "Levi", "Joseph", "Vincent", "Mason", "Nicholas", "Troy", "Julian", "Hunter", "Alex", "Miles", "Elias", "Nolan", "Nathan", "Joseph", "Luca", "Kai", "Caleb", "Evan", "Ryan", "Jacob", "Carter", "Maverick", "Benjamin", "Max", "James", "Levi", "Isaac", "Benjamin", "Aaron", "Asher", "Easton", "Hunter", "Zayden", "Blake", "Elijah", "James", "Owen", "Mathew", "Adrian", "Jaxon", "Nathan", "Joshua", "David", "Matthew", "Tyler", "Jacob", "Sebastian", "Caleb", "Bryce", "Isaiah", "Hunter", "Liam", "Luke", "Jackson", "Caleb", "Hudson", "Adam", "John", "Carter", "Cameron", "Max", "Ryan", "Jaxon", "Lucas", "Bryson", "Noah", "Eli", "Wyatt", "Julian", "Cole", "Isaac", "Ezra", "Aaron", "Victor", "Angel", "Elijah", "Dominic", "Ezra", "Sebastian", "Carter", "Jameson", "Luke", "Santiago", "Matthew", "Levi", "Xander", "Mason", "David", "Oliver", "Eli", "Henry", "Abel", "Antonio", "Roman", "Diego", "Alexander", "Elliott", "Matthew", "Evan", "Nolan", "Aiden", "Isaiah", "James", "Robert", "Lucas", "Cameron", "Isaac", "Lucas", "Blake", "Ryan", "Hudson", "Thomas", "Samuel", "Nicholas", "Carter", "Isaac", "Jaxson", "Jackson", "Levi", "Andrew", "Jason", "Caleb", "Luke", "Benjamin", "Maverick", "Caleb", "David", "Jack", "Gabriel", "Oliver", "Liam", "Ryan", "Zachary", "Mason", "Milo", "Luke", "Theo", "Leo", "Maxwell", "Robert", "Nolan", "Charles", "Gabriel", "Lucas", "Miles", "Jaxon", "Blake", "Asher", "Miles", "Noah", "Owen", "Adam", "Wyatt", "Isaac", "Zachary", "John", "Ryan", "Sebastian", "Jacob", "Matthew", "Levi", "Adrian", "Jason", "Nolan", "Mason", "Lucas", "Jackson", "Julian", "Elijah", "Milo", "Matthew", "Tyler", "Eli", "Benjamin", "Asher", "Robert", "Oliver", "Ezekiel", "Maverick", "Andrew", "Elijah", "James", "Zachary", "Owen", "Sebastian", "Caleb", "David", "Miles", "Carter", "Eli", "Sebastian", "Isaac", "Wyatt", "Jack", "Andrew", "Gabriel", "Matthew", "Grayson", "David", "Lucas", "Ezekiel", "Adam", "Elijah", "Maverick", "Mason", "Thomas", "Elijah", "Asher", "Sebastian", "Xavier", "Lucas", "Carter", "Hudson", "Zane", "Cameron", "Benjamin", "Levi", "William", "Lucas", "Eli", "Maxwell", "Hudson", "Landon", "Levi", "Roman", "Santiago", "Milo", "Maverick", "Carter", "Liam", "Caden", "Isaiah", "Samuel", "Ryan", "Jack", "Joshua", "Jameson", "Jacob", "Michael", "Luca", "Levi", "Asher", "Nicholas", "Caleb", "Eli", "Miles", "Wyatt", "Ezra", "Ryan", "Sebastian", "Mason", "Nolan", "Elijah", "Isaac", "Jackson", "Carter", "Gabriel", "Lucas", "Leo", "Isaiah", "Julian", "Jack", "Levi", "Mason", "Oliver", "Hudson", "Evan", "Hudson", "Noah", "Sebastian", "David", "Milo", "Aiden", "Zachary", "Blake", "Ezekiel", "Maverick", "Samuel", "Julian", "Santiago", "Xander", "Liam", "Jacob", "Adrian", "Caleb", "Jacob", "David", "Lucas", "Maverick", "Miles", "Eli", "Ethan", "Daniel", "Hudson", "Noah", "Zachary", "Owen", "Nolan", "Elijah", "Isaac", "Hudson", "Ezra", "Hunter", "Wyatt", "Eli", "Aiden", "Sebastian", "Caleb", "Jameson", "Eli", "Maverick", "Asher", "Jaxon", "Noah", "Ezekiel", "Lucas", "Roman", "Asher", "Carter", "Ezra", "Benjamin", "Hudson", "Zachary", "Sebastian", "Maverick", "Isaac", "James", "Noah", "Luke", "Jack", "Levi", "Aiden", "Jacob", "Mason", "Carter", "Wyatt", "Lucas", "Maverick", "Hudson", "Levi", "Sebastian", "David", "Santiago", "Jameson", "Lucas", "Leo", "Caden", "Hudson", "Julian", "Miles", "Zachary", "Cameron", "Isaiah", "Hudson", "Maverick", "Levi", "Mason", "Sebastian", "Blake", "Wyatt", "Ezra", "Zachary","Balls",""])
                 author = f"{author} {author2}"
                 id += 1
-                adding = (book,author,id)
-                library.add(adding)
+                tempdict = {
+                    "Book":book,
+                    "Author":author,
+                    "ID":id
+                }
+                library.update(tempdict)
                 print(f"{book} by {author} ID: {id}")
             input("\nPress enter to continue")
 
@@ -85,23 +98,26 @@ def main():
             cs()
             print(f"======= {library_name} =======\n")
             for x in library: # Printing out the whole library
-                print(f"Book: {x[0]}") # Indexing the tuple in the set for book/author
-                print(f"Author: {x[1]}")
-                print(f"ID: {x[2]}\n")
+                print(f"Book: {library[x]["Book"]}") # Indexing the dictionary in the dictionary for book/author
+                print(f"Author: {library[x]["Author"]}")
+                print(f"ID: {library[x]["ID"]}\n")
             input('Press enter to continue')
         elif choice == 8: # Exit Choice
             print(f"\nExiting {library_name}! See you next time!")
             exit()
 
-def add_item(): # Add function
-    global id
+def add_item(id): # Add function
     cs()
     print("Adding Item")
     book = str_input("What is the title of the book?: ")
     author = str_input("What is the authors name?: ")
     id += 1
-    adding = (book,author,id) # Ordered Tuple for adding to library set
-    library.add(adding) # Adds book and title 
+    tempdict = {
+        "Book":book,
+        "Author":author,
+        "ID":id
+    }
+    library.update(tempdict)# Adds book and title 
     print(f"This book has an ID of {id}")
     input("Press enter to continue")
 
@@ -112,11 +128,11 @@ def remove_item(): # Remove function
     print()
     for x in library: # Searching for book
         for i in range(3):
-            if str(x[i]) == search:
+            if library[x][i] == search:
                 check = 0
-                print(f"Book: {x[0]}") # printing found book
-                print(f"Author: {x[1]}")
-                print(f"ID: {x[2]}\n")
+                print(f"Book: {library[x]["Book"]}") # Printing Found Book
+                print(f"Author: {library[x]["Author"]}")
+                print(f"ID: {library[x]["ID"]}\n")
                 break
             else:
                 check = 1
@@ -146,4 +162,4 @@ def search_library():
     input("\nPress enter to continue")
 
 
-main() 
+main(id) 
