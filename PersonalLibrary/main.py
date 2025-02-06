@@ -5,17 +5,17 @@ import random
 # Initializing Variables
 
 library_name = "My Library"
-library = {
-    1: {"Book": "Test Book",
+library = [
+    {"Book": "Test Book",
         "Author": "Test Author",
         "ID": 1},
-    2: {"Book": "Test Book 2",
+    {"Book": "Test Book 2",
         "Author": "Test Author 2",
         "ID": 2},
-    3: {"Book": "Test Book 3",
+    {"Book": "Test Book 3",
         "Author": "Test Author 3",
         "ID": 3},
-}
+]
 id = 3
 
 
@@ -48,7 +48,7 @@ def cs(): # Clear Screen
     print("\033c",end="")
 
 # Main Funcitons
-def main(id):
+def main(id,library_name,library):
     while True:
         cs()
         choice = int_input("Personal Library\n\n1. Search Library\n2. Add Item\n3. Remove Item\n4. Erase Library\n5. Generate Random Books\n6. Rename Library\n7. View Library\n8. Exit Library\n\nWhat do you want to do? (1-8): ")
@@ -62,7 +62,7 @@ def main(id):
             sure = input("Are you sure you want to reset your library? (type yes, anything else will cancel): ")
             if sure.lower() == "yes":
                 print("Library reset!")
-                library = {}
+                library = []
                 input("Press enter to continue")
             else:
                 print("Glad you decided not too!")
@@ -85,7 +85,7 @@ def main(id):
                     "Author":author,
                     "ID":id
                 }
-                library.update(tempdict)
+                library.append(tempdict)
                 print(f"{book} by {author} ID: {id}")
             input("\nPress enter to continue")
 
@@ -97,7 +97,7 @@ def main(id):
         elif choice == 7: # Print out the entire library
             cs()
             print(f"======= {library_name} =======\n")
-            for x in library: # Printing out the whole library
+            for x in range(len(library)): # Printing out the whole library
                 print(f"Book: {library[x]["Book"]}") # Indexing the dictionary in the dictionary for book/author
                 print(f"Author: {library[x]["Author"]}")
                 print(f"ID: {library[x]["ID"]}\n")
@@ -117,34 +117,30 @@ def add_item(id): # Add function
         "Author":author,
         "ID":id
     }
-    library.update(tempdict)# Adds book and title 
+    library.append(tempdict)# Adds book and title 
     print(f"This book has an ID of {id}")
     input("Press enter to continue")
 
 def remove_item(): # Remove function
     cs()
+    check = 0
     print("Removing Item")
     search = input("Enter book or author name or ID: ")
     print()
-    for x in library: # Searching for book
-        for i in range(3):
-            if library[x][i] == search:
-                check = 0
-                print(f"Book: {library[x]["Book"]}") # Printing Found Book
-                print(f"Author: {library[x]["Author"]}")
-                print(f"ID: {library[x]["ID"]}\n")
-                break
-            else:
-                check = 1
-    if check != 1:
-        deleting = int_input("Enter the ID of the item you want to remove: ")
-        for x in library: # Searching for book
-            if x[2] == deleting:
-                library.remove(x)
-                print(f"\nRemoved {x[0]} by {x[1]} with an ID of {x[2]}\n")
-                break
-    else:
+    for x in range(len(library)): # Searching for book
+        if library[x]["Book"] == search.strip() or library[x]["Author"] == search.strip() or library[x]["ID"] == int(search.strip()):
+            print(f"Book: {library[x]["Book"]}") # Printing Found Book
+            print(f"Author: {library[x]["Author"]}")
+            print(f"ID: {library[x]["ID"]}\n")
+            check = 1
+    if check == 0:
         print("No results found!")
+    else:
+        choice = int(input("What is the ID of the book you want to remove?: "))
+        for x in range(len(library)):
+            if library[x]["ID"] == choice:
+                library.remove(x)
+                print("Book Removed!")
     input("Press enter to continue")
 
 def search_library():
@@ -152,14 +148,12 @@ def search_library():
     print(f'{library_name} Search System')
     search = input("Enter book or author full name or ID: ")
     print()
-    for x in library: # Searching for book
-        for i in range(3):
-            if str(x[i]).lower() == search.lower():
-                print(f"Book: {x[0]}") # printing found book
-                print(f"Author: {x[1]}")
-                print(f"ID: {x[2]}\n")
-                break
+    for x in range(len(library)): # Searching for book
+        if library[x]["Book"] == search.strip() or library[x]["Author"] == search.strip() or library[x]["ID"] == int(search.strip()):
+            print(f"Book: {library[x]["Book"]}") # Printing Found Book
+            print(f"Author: {library[x]["Author"]}")
+            print(f"ID: {library[x]["ID"]}\n")
     input("\nPress enter to continue")
 
 
-main(id) 
+main(id,library_name,library) 
