@@ -136,10 +136,10 @@ def remove_item(): # Remove function
     if check == 0:
         print("No results found!")
     else:
-        choice = int(input("What is the ID of the book you want to remove?: "))
+        choice = input("What is the ID of the book you want to remove?: ")
         for x in range(len(library)):
-            if library[x]["ID"] == choice:
-                library.remove(x)
+            if str(library[x-1]["ID"]) == choice:
+                library.pop(x-1)
                 print("Book Removed!")
     input("Press enter to continue")
 
@@ -149,7 +149,7 @@ def search_library():
     search = input("Enter book or author full name or ID: ")
     print()
     for x in range(len(library)): # Searching for book
-        if library[x]["Book"] == search.strip() or library[x]["Author"] == search.strip() or library[x]["ID"] == int(search.strip()):
+        if library[x]["Book"] == search.strip() or library[x]["Author"] == search.strip() or str(library[x]["ID"]) == search:
             print(f"Book: {library[x]["Book"]}") # Printing Found Book
             print(f"Author: {library[x]["Author"]}")
             print(f"ID: {library[x]["ID"]}\n")
