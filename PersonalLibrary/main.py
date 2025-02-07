@@ -55,7 +55,7 @@ def main(id,library_name,library):
         if choice == 1: # Search Item choice
             search_library() # Search Item function
         elif choice == 2: # Adding item choice
-            add_item(id) # Add item function
+            id = add_item(id) # Add item function
         elif choice == 3: # Remove item choice
             remove_item() # Remove item function
         elif choice == 4: # Deleting the entire library choice
@@ -120,6 +120,7 @@ def add_item(id): # Add function
     library.append(tempdict)# Adds book and title 
     print(f"This book has an ID of {id}")
     input("Press enter to continue")
+    return id
 
 def remove_item(): # Remove function
     cs()
