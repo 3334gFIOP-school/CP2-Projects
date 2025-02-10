@@ -9,15 +9,15 @@ library_name = "My Library"
 library = [
     {"Book": "Test Book",
         "Author": "Test Author",
-        "Date": "Jan 01 2000",
+        "Date": "Mon Feb 10 13:17:51 2025",
         "ID": 1},
     {"Book": "Test Book 2",
         "Author": "Test Author 2",
-        "Date": "Jan 01 2000",
+        "Date": "Mon Feb 10 13:18:51 2025",
         "ID": 2},
     {"Book": "Test Book 3",
         "Author": "Test Author 3",
-        "Date": "Jan 01 2000",
+        "Date": "Mon Feb 10 13:19:51 2025",
         "ID": 3},
 ]
 id = 3
