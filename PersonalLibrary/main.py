@@ -101,13 +101,21 @@ def main(id,library_name,library):
             input("Press enter to continue")
         elif choice == 7: # Print out the entire library
             cs()
-            print(f"======= {library_name} =======\n")
-            for x in range(len(library)): # Printing out the whole library
-                print(f"Book: {library[x]["Book"]}") # Indexing the dictionary in the dictionary for book/author
-                print(f"Author: {library[x]["Author"]}")
-                print(f"Date Created: {library[x]["Date"]}")
-                print(f"ID: {library[x]["ID"]}\n")
-            input('Press enter to continue')
+            choice2 = int_input("Simple (1) or Complicated (2)? (1-2): ")
+            if choice2 == 2:
+                print(f"======= {library_name} =======\n")
+                for x in range(len(library)): # Printing out the whole library
+                    print(f"Book: {library[x]["Book"]}") # Indexing the dictionary in the dictionary for book/author
+                    print(f"Author: {library[x]["Author"]}")
+                    print(f"Date Created: {library[x]["Date"]}")
+                    print(f"ID: {library[x]["ID"]}\n")
+                input('Press enter to continue')
+            elif choice2 == 1:
+                print(f"======= {library_name} ======= (Simplefied) =======\n")
+                for x in range(len(library)): # Printing out the whole library
+                    print(f"Book: {library[x]["Book"]}") # Indexing the dictionary in the dictionary for book/author
+                    print(f"ID: {library[x]["ID"]}\n")
+                input('Press enter to continue')
         elif choice == 8: # Exit Choice
             print(f"\nExiting {library_name}! See you next time!")
             exit()
