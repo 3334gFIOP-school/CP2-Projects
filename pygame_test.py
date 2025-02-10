@@ -36,7 +36,7 @@ while running:
     pygame.draw.rect(screen, random.choice(main_colors), pygame.Rect(random.randint(1,2560), random.randint(1,1440), 60, 60))
     pygame.display.flip()
     """
-    font = pygame.font.Font('freesansbold.ttf', 32)
+    font = pygame.font.Font('freesansbold.ttf', 1000)
     text = font.render('GeeksForGeeks', True, green, blue)
 
     screen.fill("white")

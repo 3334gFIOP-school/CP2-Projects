@@ -1,6 +1,7 @@
 # Jackson Hauley - Personal Library Program
 
 import random
+import time
 
 # Initializing Variables
 
@@ -8,12 +9,15 @@ library_name = "My Library"
 library = [
     {"Book": "Test Book",
         "Author": "Test Author",
+        "Date": "Jan 01 2000",
         "ID": 1},
     {"Book": "Test Book 2",
         "Author": "Test Author 2",
+        "Date": "Jan 01 2000",
         "ID": 2},
     {"Book": "Test Book 3",
         "Author": "Test Author 3",
+        "Date": "Jan 01 2000",
         "ID": 3},
 ]
 id = 3
@@ -83,6 +87,7 @@ def main(id,library_name,library):
                 tempdict = {
                     "Book":book,
                     "Author":author,
+                    "Date":time.ctime(),
                     "ID":id
                 }
                 library.append(tempdict)
@@ -100,6 +105,7 @@ def main(id,library_name,library):
             for x in range(len(library)): # Printing out the whole library
                 print(f"Book: {library[x]["Book"]}") # Indexing the dictionary in the dictionary for book/author
                 print(f"Author: {library[x]["Author"]}")
+                print(f"Date Created: {library[x]["Date"]}")
                 print(f"ID: {library[x]["ID"]}\n")
             input('Press enter to continue')
         elif choice == 8: # Exit Choice
@@ -115,6 +121,7 @@ def add_item(id): # Add function
     tempdict = {
         "Book":book,
         "Author":author,
+        "Date": time.ctime(),
         "ID":id
     }
     library.append(tempdict)# Adds book and title 
@@ -132,6 +139,7 @@ def remove_item(): # Remove function
         if library[x]["Book"] == search.strip() or library[x]["Author"] == search.strip() or library[x]["ID"] == int(search.strip()):
             print(f"Book: {library[x]["Book"]}") # Printing Found Book
             print(f"Author: {library[x]["Author"]}")
+            print(f"Date Created:: {library[x]["Date"]}")
             print(f"ID: {library[x]["ID"]}\n")
             check = 1
     if check == 0:
@@ -153,6 +161,7 @@ def search_library():
         if library[x]["Book"] == search.strip() or library[x]["Author"] == search.strip() or str(library[x]["ID"]) == search:
             print(f"Book: {library[x]["Book"]}") # Printing Found Book
             print(f"Author: {library[x]["Author"]}")
+            print(f"Date Created:: {library[x]["Date"]}")
             print(f"ID: {library[x]["ID"]}\n")
     input("\nPress enter to continue")
 
