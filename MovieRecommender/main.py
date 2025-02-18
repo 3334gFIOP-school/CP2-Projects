@@ -80,14 +80,16 @@ def search_movies(): # Searching for movies function
                     found_movie_num.append(x)
             except ValueError:
                 pass
-            
+    checker = []
+    if found_movie_num != []:
+        for i in range(len(search_terms)): # Making sure there is only one movie
+            num_count = found_movie_num.count(found_movie_num[i])
+            if num_count >= 1 and found_movie_num[i] not in checker:
+                final_found_movie_num.append(found_movie_num[i])
+                checker.append(found_movie_num[i])
+                
 
-    for i in range(len(search_terms)):
-        num_count = found_movie_num.count(found_movie_num[i])
-        if num_count == term_amount:
-            final_found_movie_num.append(found_movie_num[i])
-
-    for x in range(len(final_found_movie_num)): # Printing out the whole library
+        for x in range(len(final_found_movie_num)): # Printing out the whole library
             print()
             print(f"Title: {movies[final_found_movie_num[x]]["Title"]}") # Indexing the dictionary in the dictionary for book/author
             print(f"Director: {movies[final_found_movie_num[x]]["Director"]}") # Director of the movie
@@ -96,13 +98,10 @@ def search_movies(): # Searching for movies function
             print(f"Runtime: {movies[final_found_movie_num[x]]["Runtime"]}") # Prints runtime in minutes
             print(f"Actors: {", ".join(movies[final_found_movie_num[x]]["Actors"])}\n") # Prints actors
 
+    else:
+        print("No Movies Found!")
     input("Press enter to continue")
         
-
-
-    
-    
-
 # Reading and making the file a list of dictionaries
 movies = [] # List of dictionaries of movies
 with open("MovieRecommender\Movies list.csv") as file: # Reading the csv file
