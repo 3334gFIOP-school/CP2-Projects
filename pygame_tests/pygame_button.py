@@ -1,6 +1,6 @@
 import pygame 
 import sys 
-  
+import random
   
 # initializing the constructor 
 pygame.init() 
@@ -8,6 +8,9 @@ pygame.init()
 # screen resolution 
 res = (720,720) 
   
+# Names the window
+pygame.display.set_caption('Random Title')
+
 # opens up a window 
 screen = pygame.display.set_mode(res) 
   
@@ -19,7 +22,7 @@ color_light = (170,170,170)
   
 # dark shade of the button 
 color_dark = (100,100,100) 
-  
+alphabet = [chr(i) for i in range(97, 123)]
 # stores the width of the 
 # screen into a variable 
 width = screen.get_width() 
@@ -36,7 +39,7 @@ smallfont = pygame.font.SysFont('Arial',35)
 # this font 
 
 text = smallfont.render('Quit' , True , white) 
-  
+
 while True: 
     # fills the screen with a color 
     screen.fill((40,40,40)) # R G B 
@@ -47,29 +50,38 @@ while True:
 
     # if mouse is hovered on a button it 
     # changes to lighter shade  
-    if width/2 <= mouse[0] <= width/2+140 and height/2 <= mouse[1] <= height/2+40: 
-        pygame.draw.rect(screen,color_light,[width/2,height/2,140,40]) 
+    if width/4 <= mouse[0] <= width/4+140 and height/4 <= mouse[1] <= height/4+40: 
+        pygame.draw.rect(screen,color_light,[width/4,height/4,140,40]) 
           
     else: 
-        pygame.draw.rect(screen,color_dark,[width/2,height/2,140,40]) 
+        pygame.draw.rect(screen,color_dark,[width/4,height/4,140,40]) 
 
     # superimposing the text onto our button 
-    screen.blit(text , (width/2+38,height/2)) 
+    screen.blit(text , (width/4+38,height/4)) 
 
     # updates the frames of the game 
     pygame.display.update() 
+
+    quit = 0
 
     for ev in pygame.event.get(): 
           
         if ev.type == pygame.QUIT: 
             pygame.quit() 
+            quit = 1
+            break
               
         #checks if a mouse is clicked 
         if ev.type == pygame.MOUSEBUTTONDOWN:
               
             #if the mouse is clicked on the 
             # button the game is terminated 
-            if width/2 <= mouse[0] <= width/2+140 and height/2 <= mouse[1] <= height/2+40: 
+            if width/4 <= mouse[0] <= width/4+140 and height/4 <= mouse[1] <= height/4+40: 
                 pygame.quit() 
-                  
+                quit = 1
+                break
     
+    if quit == 1:
+        break
+
+    pygame.display.set_caption(random.choice(alphabet))    
