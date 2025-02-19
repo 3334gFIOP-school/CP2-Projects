@@ -20,7 +20,7 @@ def int_input(text): # Only takes in integers
 def main(): # Main function
     while True:
         cs()    
-        choices = int_input("Movie Recommender\n\n1. Print Movie List\n2. Search Movies\n3. Exit\n\nWhich one do you want to do? (1-3): ")
+        choices = int_input("Movie Recommender\n\n1. Print Movie List\n2. Search Through Movies\n3. Exit\n\nWhich one do you want to do? (1-3): ")
         if choices == 1: # Print Movie List
             print_list() # Print list Function
         elif choices == 2: # Search Movie List
@@ -54,7 +54,7 @@ def print_list(): # Print list Function
 
 def search_movies():  # Searching for movies function
     cs()  # Clears the screen
-    term_amount = int_input("How many search terms do you want to search at once?: ")
+    term_amount = int_input("How many search terms do you want to search at once?\n2 would be searching for 2 words in one movie: ")
     search_terms = [input(f"Search Term {x+1}: ").strip().lower() for x in range(term_amount)]
     final_found_movie_num = []
     for index, movie in enumerate(movies):  # Iterate through movie list (I had to look up enumerate tbh but I figured it out its just another x or i)
