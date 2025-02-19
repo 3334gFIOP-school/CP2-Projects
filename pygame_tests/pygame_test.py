@@ -22,7 +22,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     # fill the screen with a color to wipe away anything from last frame
-    """
+    
     screen.fill(random.choice(main_colors))
     pygame.draw.rect(screen, random.choice(main_colors), pygame.Rect(random.randint(1,2560), random.randint(1,1440), 60, 60))
     pygame.display.flip()
@@ -35,7 +35,7 @@ while running:
     screen.fill(random.choice(main_colors))
     pygame.draw.rect(screen, random.choice(main_colors), pygame.Rect(random.randint(1,2560), random.randint(1,1440), 60, 60))
     pygame.display.flip()
-    """
+    
     font = pygame.font.Font('freesansbold.ttf', 1000)
     text = font.render('GeeksForGeeks', True, green, blue)
 
