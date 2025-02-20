@@ -96,15 +96,21 @@ while True: # Main Loop (break after quit)
                 break
 
             if reaction_game_location['StartPos']['x'] <= mouse[0] <= reaction_game_location['StartPos']['x']+reaction_game_location['width'] and reaction_game_location['StartPos']['y'] <= mouse[1] <= reaction_game_location['StartPos']['y']+reaction_game_location['height']: 
-                screen.blit(bigfont.render('Reaction Game' , True , white),(100,100))
+                
                 while True:
-
+                    screen.fill((40,40,40))
+                    screen.blit(bigfont.render('Reaction Game' , True , white),(100,100))
                     
-                    pygame.display.update() # updates the frames of the game (always use)
                     clock.tick(60) # Capping at 60fps so my PC doesnt die
-                    quit_check()
+
+                    if ev.type == pygame.QUIT: 
+                        pygame.quit() 
+                        quit = 1
+
                     if quit == 1:
                         break   
+
+                    pygame.display.update() # updates the frames of the game (always use)
 
     
     if quit == 1:
