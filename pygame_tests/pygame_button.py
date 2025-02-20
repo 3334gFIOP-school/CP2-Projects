@@ -1,35 +1,26 @@
-import pygame # type: ignore
+# Jackson Hauley PYGAME TEST
+
+import pygame 
 import sys 
 import random
   
 pygame.init() # initializing the constructor 
  
-  
-# screen resolution 
-res = (720,720) 
-  
 # Names the window
 pygame.display.set_caption('Random Title')
 
-# opens up a window 
+# opens the window with the resolution
+res = (720,720) 
 screen = pygame.display.set_mode(res) 
   
-# white color 
+# colors
 white = (255,255,255) 
-  
-# light shade of the button 
 color_light = (170,170,170)
-
-  
-# dark shade of the button 
 color_dark = (100,100,100) 
+
 alphabet = [chr(i) for i in range(97, 123)]
-# stores the width of the 
-# screen into a variable 
+
 width = screen.get_width() 
-  
-# stores the height of the 
-# screen into a variable 
 height = screen.get_height() 
   
 # defining a font 
@@ -59,7 +50,6 @@ while True:
 
     # superimposing the text onto quit button
     screen.blit(text , (width/4+38,height/4)) 
-
     # END QUIT BUTTON ===================================
 
     # updates the frames of the game 
