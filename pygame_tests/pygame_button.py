@@ -52,9 +52,7 @@ while True: # Main Loop (break after quit)
         pygame.draw.rect(screen,color_light,[quit_location['StartPos']['x'],quit_location['StartPos']['y'],quit_location['width'],quit_location['height']]) # If mouse is hovering
     else: 
         pygame.draw.rect(screen,color_dark,[quit_location['StartPos']['x'],quit_location['StartPos']['y'],quit_location['width'],quit_location['height']]) # If mouse is not touching
-
-    # superimposing the text onto quit button
-    screen.blit(quit_button_text , (quit_location['StartPos']['x']+quit_location['width']/4,quit_location['StartPos']['y'])) 
+    screen.blit(quit_button_text , (quit_location['StartPos']['x']+quit_location['width']/4,quit_location['StartPos']['y'])) # Putting text on the button
 
 
 
