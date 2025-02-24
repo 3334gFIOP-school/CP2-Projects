@@ -2,4 +2,4 @@ X//Wash Dishes
 O//Clean Car
 O//Clean PC
 X//Do Homework
-O//Eat Dinner
+X//Fix Wall
