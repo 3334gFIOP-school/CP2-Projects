@@ -28,6 +28,8 @@ print(name2,age2,color2)
 """
 > Why would you use multiple pages for a python project? 
 You can have each page its own functions so that you can manage different sections of the project in different sections of the code so you can manage and organize
+Easier to merge branches
+Modularity - Breaking program up
 
 """
 
