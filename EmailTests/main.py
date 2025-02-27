@@ -13,13 +13,13 @@ server = smtplib.SMTP(smtp_server, smtp_port)
 server.starttls() 
 server.login(user_email, user_password)
 sender = "jackson.hauley@ucas-edu.net"
-recipient = "gavin.pierce@ucas-edu.net"
+recipient = "alec.george@ucas-edu.net"
 subject = "Hello"
 body = "Sup Pedro"
 file_path = "C:/Users/jackson.hauley/Downloads/long-brain-fart.mp3" 
 
 y = 1
-for x in range(10):
+for x in range(5):
     subject = str(y)  # Ensure subject is a string
     message = MIMEMultipart()
     message["From"] = sender
