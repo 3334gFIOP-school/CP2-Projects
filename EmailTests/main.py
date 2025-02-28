@@ -8,15 +8,15 @@ from email import encoders
 smtp_server = "smtp.gmail.com"
 smtp_port = 587  # or 465 for SSL
 user_email = "jackson.hauley@ucas-edu.net"
-user_password = "test"  
+user_password = "e"  
 server = smtplib.SMTP(smtp_server, smtp_port)
 server.starttls() 
 server.login(user_email, user_password)
 sender = "jackson.hauley@ucas-edu.net"
-recipient = "alec.george@ucas-edu.net"
-subject = "Hello"
-body = "Sup Pedro"
-file_path = "C:/Users/jackson.hauley/Downloads/long-brain-fart.mp3" 
+recipient = "gavin.pierce@ucas-edu.net"
+subject = "E"
+body = "Hello"
+file_path = "C:/Users/jackson.hauley/Downloads/random sound.mp3"
 
 y = 1
 for x in range(5):
