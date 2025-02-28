@@ -8,18 +8,18 @@ from email import encoders
 smtp_server = "smtp.gmail.com"
 smtp_port = 587  # or 465 for SSL
 user_email = "jackson.hauley@ucas-edu.net"
-user_password = "e"  
+user_password = "E"  
 server = smtplib.SMTP(smtp_server, smtp_port)
 server.starttls() 
 server.login(user_email, user_password)
 sender = "jackson.hauley@ucas-edu.net"
-recipient = "gavin.pierce@ucas-edu.net"
+recipient = "pedro.souza@ucas-edu.net"
 subject = "E"
 body = "Hello"
-file_path = "C:/Users/jackson.hauley/Downloads/random sound.mp3"
+file_path = "C:/Users/jackson.hauley/Downloads/long-brain-fart.mp3"
 
 y = 1
-for x in range(5):
+for x in range(10):
     subject = str(y)  # Ensure subject is a string
     message = MIMEMultipart()
     message["From"] = sender
