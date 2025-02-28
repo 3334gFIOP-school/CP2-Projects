@@ -8,7 +8,7 @@ from email import encoders
 smtp_server = "smtp.gmail.com"
 smtp_port = 587  # or 465 for SSL
 user_email = "jackson.hauley@ucas-edu.net"
-user_password = "Gamertag4!"  
+user_password = "test"  
 server = smtplib.SMTP(smtp_server, smtp_port)
 server.starttls() 
 server.login(user_email, user_password)
