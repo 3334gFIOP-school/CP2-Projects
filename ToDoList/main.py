@@ -83,6 +83,10 @@ def mark_item(todo): # Marking an item with an X or an O
                 todo.append(f"X//{x[1].strip().lower()}")
                 print(f"[O] {x.split("//")[1].strip().lower()} is now [X] {x.split("//")[1].strip().lower()}!")
     
+    with open("ToDoList/list.txt", "w") as file:
+        for x in todo:
+            file.write(f"{x}\n")
+
     if switched:
         print("Item Changed!")
     else:
