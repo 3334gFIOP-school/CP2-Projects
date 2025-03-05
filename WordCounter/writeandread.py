@@ -1,5 +1,7 @@
 # Writing and reading file
 
+import time
+
 def cs(): # Clear Screen
     print("\033c",end="")
 
