@@ -16,15 +16,12 @@ def int_input(text): # Only takes in integers
 
 def write(): # Write to a file menu
     cs()
-    choice = int_input("1. File 1\n2. File 2\n3. Exit\n\nWhat would you like to do? (1-3): ")
-    if choice == 1: # File 1
-        file = "WordCounter/text.txt"
-        write_to(file)
-    elif choice == 2: # File 2
-        file = "WordCounter/text2.txt"
-        write_to(file)
-    elif choice == 3:
-        pass
+    choice = input("Copy the file path: ")
+    path = choice.split(f"{"\"}")
+    for x in path:
+        if x == "/":
+            path.pop(x)
+            path.insert("/)
 
 def read(): # Read a file menu
     cs()
