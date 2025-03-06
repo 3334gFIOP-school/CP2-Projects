@@ -2,6 +2,7 @@
 
 import random
 from essentials import *
+from characters import *
 
 # Main Function
 def main(): # Main function that runs a bunch of crap through it
@@ -15,7 +16,15 @@ def main(): # Main function that runs a bunch of crap through it
         elif choice == 3: # Shop
             pass
         elif choice == 4: # Character Management Menu
-            pass
+            while True:
+                cs()
+                choice = int_input("CHARACTER MANAGEMENT\n\n1. Create Character\n2. View Character\n3. Exit\n\nChoose a stupid option: ")
+                if choice == 1: # Create Character
+                    create_character(characters)
+                elif choice == 2: # View Character
+                    pass
+                elif choice == 3: # Exit
+                    pass
         elif choice == 5: # Exits
             cs(),print("Bye"),quit()
 
