@@ -16,37 +16,31 @@ def int_input(text): # Only takes in integers
 
 def write(): # Write to a file menu
     cs()
-    choice = int_input("1. File 1\n2. File 2\n3. Exit\n\nWhat would you like to do? (1-3): ")
-    if choice == 1: # File 1
-        file = "WordCounter/text.txt"
-        write_to(file)
-    elif choice == 2: # File 2
-        file = "WordCounter/text2.txt"
-        write_to(file)
-    elif choice == 3:
-        pass
+    choice = input("Copy the file path: ")
+    path = choice.replace("\\", "/")
+    write_to(path)
 
 def read(): # Read a file menu
     cs()
-    choice = int_input("1. File 1\n2. File 2\n3. Exit\n\nWhat would you like to do? (1-3): ")
-    if choice == 1: # File 1
-        file = "WordCounter/text.txt"
-        read_from(file)
-    elif choice == 2: # File 2
-        file = "WordCounter/text2.txt"
-        read_from(file)
-    elif choice == 3:
-        pass
+    choice = input("Copy the file path: ")
+    path = choice.replace("\\", "/")
+    read_from(path)
 
 def write_to(file): # Writes to a file
     write = input("What do you want to write to the file: ")
-    with open(file, "w") as file:
-        file.writelines([write,"\n",time.ctime()])
-        input("\nFile Overwriten!\nPress enter to continue")
+    try:
+        with open(file, "w") as file:
+            file.writelines([write,"\n",time.ctime()])
+            input("\nFile Overwriten!\nPress enter to continue")
+    except:
+        input("File not found!\nPress enter to continue")
 
 def read_from(file): # Reads from a file
     contents = []
-    with open(file, "r") as file:
-        contents = file.readlines()
-        print(f"\nYour file says:\n{contents[0]}\nWritten on:\n{contents[1]}\n")
-        input("Press enter to continue")
+    try:
+        with open(file, "r") as file:
+            contents = file.readlines()
+            print(f"\nYour file says:\n{contents[0]}\nWritten on:\n{contents[1]}\n")
+            input("Press enter to continue")
+    except:
+        input("File not found!\nPress enter to continue")
