@@ -20,7 +20,7 @@ def age():
     old = is_int(input("How old are you?: "))
     print(f"Cool. You are {old}")
 
-# age()
+age()
 
 # 2. What is the purpose of a helper functional function?
     # A function inside another function to help it like recursion
@@ -86,7 +86,7 @@ utilities = user_inputs("utilities")
 groceries = user_inputs("groceries")
 transportation = user_inputs("transportation")
 
-start = math()
+start = math(income)
 
 # 7. Why do we write closure functions
     # it is a function inside an insane function and it saves information across multiple calls
