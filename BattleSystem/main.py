@@ -4,6 +4,8 @@ import random
 from essentials import *
 from characters import *
 
+
+
 # Main Function
 def main(): # Main function that runs a bunch of crap through it
     while True:
@@ -22,9 +24,9 @@ def main(): # Main function that runs a bunch of crap through it
                 if choice == 1: # Create Character
                     create_character(characters)
                 elif choice == 2: # View Character
-                    pass
+                    view_character(characters)
                 elif choice == 3: # Exit
-                    pass
+                    break
         elif choice == 5: # Exits
             cs(),print("Bye"),quit()
 

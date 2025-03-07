@@ -1,12 +1,12 @@
-
+# Essential Functions - Jackson Hauley
 def int_input(text): # Only takes in integers
-    try: 
-        output = int(input(text))
+    while True:
+        try: output = int(input(text))
+        except ValueError:
+            print("Invalid Input! (only integers accepted)")
+            input("Press enter to try again")
+            continue
         return output
-    except ValueError:
-        print("Invalid input! (only integers accepted)")
-        input("Press enter to try again")
-        int_input(text)
 def str_input(text): # Only takes in string
     while True:
         try: output = str(input(text))
