@@ -40,8 +40,8 @@ def read_from(file): # Reads from a file
     try:
         with open(file, "r") as file:
             contents = file.readlines()
-            words = len(" ".split(contents[0]))
-            print(f"\nYour file says:\n{contents[0]}\nWritten on:\n{contents[1]}\nWords: {words}\n")
+            words = len(contents[0].split())
+            print(f"\nYour file says:\n{contents[0]}\nWritten on: {contents[1]}\nWords: {words}\n")
             input("Press enter to continue")
     except:
         input("File not found!\nPress enter to continue")
