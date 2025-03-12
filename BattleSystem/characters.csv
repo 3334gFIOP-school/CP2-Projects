@@ -1,2 +1,3 @@
-name,age,class,abliity,super,level,xp,inventory
-Jackson,15,Human,Heal,Mega Heal,1,0,[]
+name,age,health,class,ability,super,level,xp
+Jackson,15,100,Human,Heal,Mega Heal,1,0
+Jackson2,15,100,Heal,Mega Heal,1,0

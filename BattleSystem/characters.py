@@ -62,10 +62,10 @@ def create_character(characters): # Creates a character
     while True:
         ability = int_input("\nABILITIES\n1. Heal\n2. Charge\n3. Mega Block\n4. War Cry\n5. Redistillificationalism\n\nAbility Number: ")
         if ability == 1: ability2 = "Heal"
-        elif ability == 2: ability2 = "Elf"
-        elif ability == 3: ability2 = "Goblin"
-        elif ability == 4: ability2 = "Troll"
-        elif ability == 5: ability2 = "Jackson"
+        elif ability == 2: ability2 = "Charge"
+        elif ability == 3: ability2 = "Mega Block"
+        elif ability == 4: ability2 = "War Cry"
+        elif ability == 5: ability2 = "Redistillificationalism"
         else:
             print("Invalid input!")
             input("Press enter to continue")
@@ -90,8 +90,7 @@ def create_character(characters): # Creates a character
         "ablilty":ability2,
         "super":super2,
         "level":1,
-        "xp":0,
-        "inventory":[]
+        "xp":0
     }
     characters.append(new_character)
 
