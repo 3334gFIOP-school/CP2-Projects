@@ -1,5 +1,6 @@
 # Battling functions
 from characters import *
+from characters import *
 
 def battle(): # Starts the battle
     character1 = input("Name of defending character: ")
