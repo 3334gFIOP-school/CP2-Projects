@@ -1,6 +1,10 @@
 # Character Managment File - Jackson Hauley
 from essentials import *
 import csv
+from faker import Faker
+import random
+
+faker = Faker()
 
 characters = []
 
@@ -87,7 +91,7 @@ def create_character(characters): # Creates a character
         "name":name,
         "age":age,
         "class":class2,
-        "ablilty":ability2,
+        "ability":ability2,
         "super":super2,
         "level":1,
         "xp":0
@@ -96,8 +100,45 @@ def create_character(characters): # Creates a character
 
     with open("CP2-Projects/BattleSystem/characters.csv", "w", newline='') as file:
         fieldnames = characters[0].keys()
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer = csv.DictWriter(file, fieldnames=fieldnames)        
         writer.writeheader()
         writer.writerows(characters)
 
     input("Character Created!\nPress enter to continue")
+
+def rand_character(characters): # random Faker Character generation
+    name=faker.name()
+    new_character = {
+        "name":name,
+        "age":random.randint(1,100),
+        "class":random.choice(["Human","Elf","Goblin","Troll","Jackson"]),
+        "ability":random.choice(["Heal","Charge","Mega Block","War Cry","Redistillificationalism"]),
+        "super":random.choice(["Mega Heal","shielded","Crystal Slam","Summon","Undistillificationalism"]),
+        "level":1,
+        "xp":0
+    }
+    characters.append(new_character)
+    city=faker.city()
+    occupation=faker.job() # Random Character Stuff Generation
+    hobby=faker.word()
+    verb=random.choice(["Cheered","Lay Down","Screamed","Fought"])
+    place=faker.city()
+    adjective=faker.word()
+    friend_name=faker.name()
+    object=faker.word()
+    goal=faker.word()
+    destination=faker.city()
+    action=random.choice(["Cheered","Lay Down","Screamed","Fought"])
+    print(f"""
+Once upon a time, in the mystical land of {city}, there lived a {occupation} named {name}.
+They were known for their incredible skill in {hobby} and often {verb} to {place}.
+One day, {name} met a {adjective} stranger named {friend_name}, who offered them a mysterious {object}.
+Together, they embarked on an adventure to {goal}, facing many challenges along the way.
+After a long journey, they finally reached {destination} and {action}, changing the course of history forever.
+""")
+    with open("CP2-Projects/BattleSystem/characters.csv", "w", newline='') as file:
+        fieldnames = characters[0].keys()
+        writer = csv.DictWriter(file, fieldnames=fieldnames)        
+        writer.writeheader()
+        writer.writerows(characters)
+    input("Press enter to continue")
