@@ -21,7 +21,6 @@ with open("CP2-Projects/BattleSystem/characters.csv", mode='r') as file:
 def main(): # Main function that runs a bunch of crap through it
     while True:
         cs()
-
         choice = int_input("BATTLE SIMULATOR\n\n1. BATTLE\n2. CHARACTER MANAGEMENT\n3. GENERATE CHARACTER\n4. SEE STATS\n5. EXIT\n\nChoose an option: ")
         if choice == 1: # Battle
             battle()
@@ -38,7 +37,7 @@ def main(): # Main function that runs a bunch of crap through it
         elif choice == 3: # make a random character
             rand_character(characters)
         elif choice == 4: # See Stats
-            pass
+            stats()
         elif choice == 5: # Exits
             cs(),print("Bye"),quit()
 

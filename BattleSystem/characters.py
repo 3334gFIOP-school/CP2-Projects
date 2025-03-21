@@ -90,6 +90,7 @@ def create_character(characters): # Creates a character
     new_character = {
         "name":name,
         "age":age,
+        "health":100,
         "class":class2,
         "ability":ability2,
         "super":super2,
@@ -111,6 +112,7 @@ def rand_character(characters): # random Faker Character generation
     new_character = {
         "name":name,
         "age":random.randint(1,100),
+        "health":100,
         "class":random.choice(["Human","Elf","Goblin","Troll","Jackson"]),
         "ability":random.choice(["Heal","Charge","Mega Block","War Cry","Redistillificationalism"]),
         "super":random.choice(["Mega Heal","shielded","Crystal Slam","Summon","Undistillificationalism"]),
