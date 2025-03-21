@@ -1,5 +1,6 @@
 # Jackson Hauley - Battle Simulator
 
+from stats import *
 from essentials import *
 from characters import *
 from battling import *
