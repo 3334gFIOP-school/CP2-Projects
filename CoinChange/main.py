@@ -2,8 +2,10 @@
 
 from filehandling import *
 from essentials import *
+from change_calculator import *
 
 country = "us" # Default Country
+currency = get_money()
 
 def main(): # Main Function
     while True:
