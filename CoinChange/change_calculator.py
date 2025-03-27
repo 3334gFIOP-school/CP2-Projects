@@ -7,6 +7,7 @@ def calculate_change():
     cs()
     currency = get_money()  # Gets the money dictionary
     while True:
+        cs()
         country_choice = int_input("Select Country\n\n1. United States\n2. Europe\n3. United Kingdom\n4. Japan\n\nPick one (1-2): ")
         if country_choice == 1: 
             country = "usd"
@@ -20,7 +21,9 @@ def calculate_change():
         elif country_choice == 4: 
             country = "jp"
             break
-        else: print("Invalid Input! Pick a number from 1 to 4!")
+        else: 
+            print("Invalid Input! Pick a number from 1 to 4!")
+            input('Press enter to continue')
     cs()
     print(f"Country: {country}")
     while True:
@@ -32,6 +35,11 @@ def calculate_change():
             formatted = f"{amount:.2f}"
             if amount < 0:
                 print("What the heck are you trying to do here, bug test? Too bad I added this so there are no errors so take that.")
+                input('Press enter to continue')
+                end = 1
+                break
+            elif amount == 0:
+                print("No change its 0 you dont need a calculator for that dummy")
                 input('Press enter to continue')
                 end = 1
                 break
@@ -72,8 +80,7 @@ def calculate_change():
             formatted_string = f"{coin_name} x {count}"
             formatted_coins.append(formatted_string)
         change_string = "\n".join(formatted_coins) # This is just making it look nice when it prints
-        if amount != 0: print(f"Your change: \n\n{change_string}\n")
-        else: print("No change its 0 you dont need a calculator for that dummy")
+        print(f"Your change: \n\n{change_string}\n")
         input("Press enter to continue")
 
 
@@ -119,4 +126,4 @@ def get_name(name): # Gets a cleaned up name for each bill
     elif name == "fivehundredyen": return "Five Hundred Yen"
     elif name == "thousandyen": return "One Thousand Yen"
     elif name == "fivethousandyen": return "Five Thousand Yen"
-    else: return "NAME_ERROR [None]"
+    else: return "NAME_ERROR [get_name()]"
