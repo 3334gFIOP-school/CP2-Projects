@@ -25,50 +25,56 @@ def calculate_change():
     print(f"Country: {country}")
     while True:
         amount = input("\nEnter the amount of money you want change of: ")
+        end = 0
+        
         try:
             amount = float(f"{float(amount):.2f}")  # the input is a float
             formatted = f"{amount:.2f}"
-            break  
+            if amount < 0:
+                print("What the heck are you trying to do here, bug test? Too bad I added this so there are no errors so take that.")
+                input('Press enter to continue')
+                end = 1
+                break
+            else:
+                break
         except ValueError:
             print("Invalid Input! Enter any amount of money (e.g. 19.20, 35000)")
-    print(f"\nYou are converting {formatted} into {country} change\n")
-    for x in currency:  # Getting the used currency dictionary
-        if x[0] == country:
-            used_currency = x[1]
-    
-    # This is where I made the actual currency calculation
-
-    amount = int(amount*100) # Setting amount to cent base without the float
-    currency_list = []  # This is the starting list to calculate how many coins needed
-    currency_list = [float('inf')] * (amount + 1) # Setting everything to infinite and adding one, infinite being no solution
-    currency_list[0] = 0  # No coins are needed to make 0 amount
-    coins_used = [None] * (amount + 1) # Does the same thing but for coins used
-    for coin_name, coin_value in used_currency.items():  # This uses the value and the coin name and separates it from used_currency
-        for i in range(coin_value, amount + 1): # Iterates through the coin values
-            if currency_list[i - coin_value] + 1 < currency_list[i]:  # Replaces it from the list if the coin doesnt fit
-                currency_list[i] = currency_list[i - coin_value] + 1 # Subtracs it if the coin value can fit in the list
-                coins_used[i] = coin_name  # Track the coin used
-    if currency_list[amount] == float('inf'):
-        return -1, []
-    coins_used_list = [] # This is the thing that gets the names of all the coins used
-    while amount > 0:
-        coin_name = coins_used[amount]
-        coins_used_list.append(coin_name)
-        amount -= used_currency[coin_name]  # Subtract the coin value from the remaining amount
-    coin_count = {}
-    for coin in coins_used_list:
-        if coin in coin_count:
-            coin_count[coin] += 1 # Adds it if you do want to use it
-        else:
-            coin_count[coin] = 1 # Removes if you dont want to tuse it
-    formatted_coins = []
-    for coin, count in coin_count.items(): # Counting how many coins in it
-        coin_name = get_name(coin)
-        formatted_string = f"{coin_name} x {count}"
-        formatted_coins.append(formatted_string)
-    change_string = "\n".join(formatted_coins) # This is just making it look nice when it prints
-    print(f"Your change: \n\n{change_string}\n")
-    input("Press enter to continue")
+    if end != 1:
+        print(f"\nYou are converting {formatted} into {country} change\n")
+        for x in currency:  # Getting the used currency dictionary
+            if x[0] == country:
+                used_currency = x[1]
+        # This is where I made the actual currency calculation
+        amount = int(amount*100) # Setting amount to cent base without the float
+        currency_list = []  # This is the starting list to calculate how many coins needed
+        currency_list = [float('inf')] * (amount + 1) # Setting everything to infinite and adding one, infinite being no solution
+        currency_list[0] = 0  # No coins are needed to make 0 amount
+        coins_used = [None] * (amount + 1) # Does the same thing but for coins used
+        for coin_name, coin_value in used_currency.items():  # This uses the value and the coin name and separates it from used_currency
+            for i in range(coin_value, amount + 1): # Iterates through the coin values
+                if currency_list[i - coin_value] + 1 < currency_list[i]:  # Replaces it from the list if the coin doesnt fit
+                    currency_list[i] = currency_list[i - coin_value] + 1 # Subtracs it if the coin value can fit in the list
+                    coins_used[i] = coin_name  # Track the coin used
+        coins_used_list = [] # This is the thing that gets the names of all the coins used
+        while amount > 0:
+            coin_name = coins_used[amount]
+            coins_used_list.append(coin_name)
+            amount -= used_currency[coin_name]  # Subtract the coin value from the remaining amount
+        coin_count = {}
+        for coin in coins_used_list:
+            if coin in coin_count:
+                coin_count[coin] += 1 # Adds it if you do want to use it
+            else:
+                coin_count[coin] = 1 # Removes if you dont want to tuse it
+        formatted_coins = []
+        for coin, count in coin_count.items(): # Counting how many coins in it
+            coin_name = get_name(coin)
+            formatted_string = f"{coin_name} x {count}"
+            formatted_coins.append(formatted_string)
+        change_string = "\n".join(formatted_coins) # This is just making it look nice when it prints
+        if amount != 0: print(f"Your change: \n\n{change_string}\n")
+        else: print("No change its 0 you dont need a calculator for that dummy")
+        input("Press enter to continue")
 
 
 
