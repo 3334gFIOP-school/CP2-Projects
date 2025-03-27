@@ -27,6 +27,7 @@ def calculate_change():
     cs()
     print(f"Country: {country}")
     while True:
+        if country == "jp": print("This country doesnt use decimals, so if you do it will be counted as dollars, so 5000 yen is 50.00")
         amount = input("\nEnter the amount of money you want change of: ")
         end = 0
         
