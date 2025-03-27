@@ -1,2 +1,4 @@
-us,penny-1,nickel-5,dime-10,quarter-25,one-100,five-500,ten-1000,twenty-2000,fifty-5000,onehundred-10000
-eu,onecent-1,twocent-2,fivecent-5,tencent-10,twentycent-20,fiftycent-50,euro-100,twoeuro-200,fiveeuro-500,teneuro-1000,twentyeuro-2000,fiftyeuro-5000,onehundredeuro-10000
+usd,penny-1,nickel-5,dime-10,quarter-25,one-100,five-500,ten-1000,twenty-2000,fifty-5000,onehundred-10000
+eur,onecent-1,twocent-2,fivecent-5,tencent-10,twentycent-20,fiftycent-50,euro-100,twoeuro-200,fiveeuro-500,teneuro-1000,twentyeuro-2000,fiftyeuro-5000,onehundredeuro-10000
+uk,penny-1,twopence-2,fivepence-5,tenpence-10,twentypence-20,fiftypence-50,onepound-100,twopound-200,fivepound-500,tenpound-1000
+jp,oneyen-1,fiveyen-5,tenyen-10,fiftyyen-50,hundredyen-100,fivehundredyen-500,thousandyen-1000,fivethousandyen-5000
