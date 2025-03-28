@@ -3,11 +3,8 @@
 import random
 import time
 import os
-import keyboard
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt 
 import pandas as pd
-import pandas
-import faker
 from essentials import *
 
 def stats(): # All the stats

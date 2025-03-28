@@ -1,19 +1,19 @@
 # Character Managment File - Jackson Hauley
 from essentials import *
 import csv
-from faker import Faker
+from faker import Faker # type: ignore
 import random
 
 faker = Faker()
 
 characters = []
 
-def load_characters(characters):
-    with open("CP2-Projects/BattleSystem/characters.csv","r") as file:
+def load_characters(characters): # Reads characters from a file
+    with open("BattleSystem/characters.csv","r") as file:
         reader = csv.reader(file)
         next(reader)
         for row in reader:
-            characters.update({
+            characters.update({ # Assigns the characters to the appropriate dictionary
                 "name":row[0],
                 "age":row[1],
                 "class":row[2],
@@ -36,7 +36,7 @@ def view_character(characters): # Views Characters
     for x in characters:
         if x["name"].lower() == name_search.strip().lower():
             found = True
-            print(f"Name: {x["name"]}\nAge: {x["age"]}\nClass: {x["class"]}\nAbility {x["ability"]}\nSuper: {x["super"]}\nLevel: {x["level"]}\nXP: {x["xp"]}\nInventory: {print_inventory()}")
+            print(f"Name: {x["name"]}\nAge: {x["age"]}\nClass: {x["class"]}\nAbility {x["ability"]}\nSuper: {x["super"]}\nLevel: {x["level"]}\nXP: {x["xp"]}\nInventory: {print_inventory()}") # Prints out characters
     if found == False:
         print("No character found")
     input("Press enter to continue")
@@ -52,7 +52,7 @@ def create_character(characters): # Creates a character
         break
     age = int_input("Age: ")
     while True:
-        classes = int_input("\nCLASSES\n1. Human\n2. Elf\n3. Goblin\n4. Troll\n5. Jackson\n\nClass Number: ")
+        classes = int_input("\nCLASSES\n1. Human\n2. Elf\n3. Goblin\n4. Troll\n5. Jackson\n\nClass Number: ") # Select character class
         if classes == 1: class2 = "Human"
         elif classes == 2: class2 = "Elf"
         elif classes == 3: class2 = "Goblin"
@@ -64,7 +64,7 @@ def create_character(characters): # Creates a character
             continue
         break
     while True:
-        ability = int_input("\nABILITIES\n1. Heal\n2. Charge\n3. Mega Block\n4. War Cry\n5. Redistillificationalism\n\nAbility Number: ")
+        ability = int_input("\nABILITIES\n1. Heal\n2. Charge\n3. Mega Block\n4. War Cry\n5. Redistillificationalism\n\nAbility Number: ") # Select character ability
         if ability == 1: ability2 = "Heal"
         elif ability == 2: ability2 = "Charge"
         elif ability == 3: ability2 = "Mega Block"
@@ -76,7 +76,7 @@ def create_character(characters): # Creates a character
             continue
         break
     while True:
-        super = int_input("\nSUPERS\n1. Mega Heal\n2. Shielded\n3. Crystal Slam\n4. Summon\n5. Undistillificationalism\n\nSuper Number: ")
+        super = int_input("\nSUPERS\n1. Mega Heal\n2. Shielded\n3. Crystal Slam\n4. Summon\n5. Undistillificationalism\n\nSuper Number: ") # Select character super
         if super == 1: super2 = "Mega Heal"
         elif super == 2: super2 = "Shielded"
         elif super == 3: super2 = "Crystal Slam"
@@ -99,7 +99,7 @@ def create_character(characters): # Creates a character
     }
     characters.append(new_character)
 
-    with open("CP2-Projects/BattleSystem/characters.csv", "w", newline='') as file:
+    with open("BattleSystem\characters.csv", "w", newline='') as file:
         fieldnames = characters[0].keys()
         writer = csv.DictWriter(file, fieldnames=fieldnames)        
         writer.writeheader()
@@ -138,8 +138,8 @@ One day, {name} met a {adjective} stranger named {friend_name}, who offered them
 Together, they embarked on an adventure to {goal}, facing many challenges along the way.
 After a long journey, they finally reached {destination} and {action}, changing the course of history forever.
 """)
-    with open("CP2-Projects/BattleSystem/characters.csv", "w", newline='') as file:
-        fieldnames = characters[0].keys()
+    with open("BattleSystem\characters.csv", "w", newline='') as file:
+        fieldnames = characters[0].keys() # This basically adds everything back to the file with the new random one
         writer = csv.DictWriter(file, fieldnames=fieldnames)        
         writer.writeheader()
         writer.writerows(characters)
