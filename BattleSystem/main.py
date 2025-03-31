@@ -12,7 +12,7 @@ import matplotlib
 import pandas
 import faker
 
-with open("CP2-Projects/BattleSystem/characters.csv", mode='r') as file:
+with open("BattleSystem/characters.csv", mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
             characters.append(row)
