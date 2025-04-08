@@ -3,7 +3,6 @@
 
 import pygame 
 clock = pygame.time.Clock()
-import sys 
 import random
 
 def main():

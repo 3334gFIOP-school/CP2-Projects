@@ -99,9 +99,7 @@ def main(todo): # Main function that runs everything inside of it
         elif choice == 4: # Mark Item
             mark_item(todo)
         elif choice == 5: # Exit
-            cs()
-            print("Thanks for using Jacksons Amazing To Do List Manager!")
-            exit()
+            return
         else:
             input("Invalid Input!\nPress enter to continue")
 
