@@ -1,4 +1,6 @@
 # Essential Functions - Jackson Hauley
+
+FILE_PATH = "BattleSystem/characters.csv"
 def int_input(text): # Only takes in integers
     while True:
         try: output = int(input(text))

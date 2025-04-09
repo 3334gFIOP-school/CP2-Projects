@@ -1,6 +1,6 @@
 # Battling functions
 from characters import *
-from characters import *
+from essentials import FILE_PATH
 
 def battle(): # Starts the battle
     character1 = input("Name of defending character: ")
@@ -176,7 +176,7 @@ def battle(): # Starts the battle
     character1["health"] = 100+(character1["level"]*10) # Restoring Health
     character2["health"] = 100+(character2["level"]*10)
 
-    with open("CP2-Projects/BattleSystem/characters.csv", "w", newline='') as file: # Saving the new characters stats
+    with open(FILE_PATH, "w", newline='') as file: # Saving the new characters stats
         fieldnames = characters[0].keys()
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
