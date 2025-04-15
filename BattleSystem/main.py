@@ -17,7 +17,7 @@ with open(FILE_PATH, mode='r') as file:
         for row in reader:
             characters.append(row)
 
-# Main Function
+# Main Function that runs all of the other funcitons
 def main(): # Main function that runs a bunch of crap through it
     while True:
         cs()
