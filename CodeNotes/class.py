@@ -50,6 +50,7 @@ spiky = pokemon("Spiky", "Jolteon", 150, 100)
 
 
 fluffy.battle(spiky)
+spiky.HP
 
 slimy.battle(spiky)
 
