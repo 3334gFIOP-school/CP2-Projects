@@ -1,13 +1,8 @@
-# Name of the Project
+# Pet Simulator
 
 ## Project Description
+A simulator where you can take care of your pet!
 
-___
-Paragraph describing the purpose of your project and what it does.  
-
-## Installation
-___
-A series of steps to install the project, we will not do anything in this one (not used for this class)
 
 ## Execution and Usage
 ___
@@ -19,7 +14,7 @@ This is an image showing what your project looks like when it is running
 
 ## Used Technologies
 ___
-+ First Library in the repository
++ First library in the repository
 `pip install code for the library`
 + Second Library in the repository
 `pip install code for the library`
