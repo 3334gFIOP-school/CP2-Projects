@@ -14,8 +14,6 @@ def main(): # Main function
         elif choice == 2: # Read from file
             read()
         elif choice == 3: # Exit
-            cs()
-            print("Thanks for using Jacksons Amazing Word Counter!")
-            exit()
+            return
         else:
             input("Invalid Input!\nPress enter to continue")

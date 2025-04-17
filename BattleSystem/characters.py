@@ -9,7 +9,7 @@ faker = Faker()
 characters = []
 
 def load_characters(characters):
-    with open("CP2-Projects/BattleSystem/characters.csv","r") as file:
+    with open(FILE_PATH,"r") as file:
         reader = csv.reader(file)
         next(reader)
         for row in reader:
@@ -99,7 +99,7 @@ def create_character(characters): # Creates a character
     }
     characters.append(new_character)
 
-    with open("CP2-Projects/BattleSystem/characters.csv", "w", newline='') as file:
+    with open(FILE_PATH, "w", newline='') as file:
         fieldnames = characters[0].keys()
         writer = csv.DictWriter(file, fieldnames=fieldnames)        
         writer.writeheader()
@@ -138,7 +138,7 @@ One day, {name} met a {adjective} stranger named {friend_name}, who offered them
 Together, they embarked on an adventure to {goal}, facing many challenges along the way.
 After a long journey, they finally reached {destination} and {action}, changing the course of history forever.
 """)
-    with open("CP2-Projects/BattleSystem/characters.csv", "w", newline='') as file:
+    with open(FILE_PATH, "w", newline='') as file:
         fieldnames = characters[0].keys()
         writer = csv.DictWriter(file, fieldnames=fieldnames)        
         writer.writeheader()
