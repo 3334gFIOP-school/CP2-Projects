@@ -81,6 +81,11 @@ class pet:
             self.health += 20
             self.happiness -= 5
             self.cleanliness -= 5
+        elif eventnum == 6:
+            print(f"{self.name} DIES")
+            self.health = 0
+            self.happiness = 0
+            self.cleanliness = 0
     
 
         
