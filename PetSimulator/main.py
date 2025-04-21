@@ -7,6 +7,14 @@ import pandas as pd
 from file_handling import *
 from pet import pet
 
+def age_specific_actions(current_pet):
+    if current_pet.age < 1:
+        print("Your pet is still a baby. It needs extra care and attention.")
+    elif current_pet.age < 5:
+        print("Your pet is in its prime. It is active and playful.")
+    else:
+        print("Your pet is getting older. It may need more rest and special care.")
+
 def main(current_pet): # Main Functions 
     while True:
         cs() # Clear Screen
@@ -15,6 +23,7 @@ def main(current_pet): # Main Functions
         print("1. Create Pet")
         print("2. Run Simulator")
         print("3. Switch Pet")
+        print("4. Manually Interact with Pet")
         print("5. Exit")
         choice = int_input("Enter your choice: ")
         if choice == 1:
@@ -26,6 +35,7 @@ def main(current_pet): # Main Functions
                 input("Press enter to continue")
                 print("No pet selected. Create or switch to a pet first.")
         elif choice == 2:
+            age_specific_actions(current_pet) # Age specific actions
             length = int_input("How long do you want to run the simulator for? (in ticks): ") # Length of simulating the pet
             if current_pet is not None:
                 for x in range(length):
