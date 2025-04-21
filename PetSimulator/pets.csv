@@ -1,2 +1,3 @@
 Name,Type,Age,Health,Happiness,Energy,Hunger,Cleanliness
-Scout,Dog,1,100,100,100,0,100
+Scout,Dog,1.0,0,0,95,20,0
+Test,Test,0.20,20,221,100,20,48

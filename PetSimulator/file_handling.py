@@ -3,26 +3,26 @@
 import pandas as pd
 from pet import pet
 
-def save_pets_to_csv(pets, filename="PetSimulator/pets.csv"):
-    data = [{
+def save_pets_to_csv(pets, filename="PetSimulator/pets.csv"): # save to csv
+    data = [{ # Saves the pet to the csv depending on each of the list
         "Name": pet.name,
         "Type": pet.type,
-        "Age": pet.age,
+        "Age": round(pet.age, 2),
         "Health": pet.health,
         "Happiness": pet.happiness,
         "Energy": pet.energy,
         "Hunger": pet.hunger,
         "Cleanliness": pet.cleanliness
-    } for pet in pets]
-    df = pd.DataFrame(data)
+    } for pet in pets] # For pet it pets 
+    df = pd.DataFrame(data) # Frames the data when saving
     df.to_csv(filename, index=False)
     print("Pets saved successfully!")
 
-def load_pets_from_csv(filename="PetSimulator/pets.csv"):
+def load_pets_from_csv(filename="PetSimulator/pets.csv"): # load from csvssssssssssssss
     pets = []
     try:
         df = pd.read_csv(filename)
-        for _, row in df.iterrows():
+        for x, row in df.iterrows(): # Goes through the rows and makes pet lists then adds those to the main list
             pets.append(pet(
                 name=row["Name"],
                 type=row["Type"],
